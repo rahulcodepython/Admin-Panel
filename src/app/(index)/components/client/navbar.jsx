@@ -40,7 +40,7 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
                     setShortcuts(false)
                     setNotificationDrawer(false)
                 }}>
-                    <Image width={40} height={40} className="w-10 h-10 rounded-full" src="/user.png" alt="" />
+                    <Image width={40} height={40} className="w-10 h-10 rounded-full" src="/user.png" alt="..." />
                     <span className="bottom-0 left-7 absolute w-3.5 h-3.5 bg-green-400 border-2 border-black rounded-full"></span>
                 </button>
             </div>
