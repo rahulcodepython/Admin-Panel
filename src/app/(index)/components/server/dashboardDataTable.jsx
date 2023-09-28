@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { BiUpArrowAlt, BiDownArrowAlt, LuFilterX, LuFilter, RxColumns, BiX, BiChevronRight, BiChevronLeft, BsEyeSlash, BsEye } from '@/data/icons'
+import { BiUpArrowAlt, BiDownArrowAlt, LuFilterX, LuFilter, BiChevronRight, BiChevronLeft, BsEyeSlash, BsEye } from '@/data/icons'
 import { Tooltip } from 'react-tooltip'
 
 const DashboardDataTable = () => {
@@ -135,6 +135,8 @@ const DashboardDataTable = () => {
     const [showHeader, setShowHeader] = React.useState(header)
     const [page, setPage] = React.useState(1)
     const [showAllData, setShowAllData] = React.useState(false)
+    const [filtered, setFiltered] = React.useState(false)
+    const [showPage, setShowPage] = React.useState(false)
 
     const updateHeader = (item, arrow) => {
         const newHeader = header.map((value) => {
@@ -217,46 +219,65 @@ const DashboardDataTable = () => {
 
     React.useEffect(() => {
         setShowData(getDataForPage(page, data, itemsPerPage));
+        setShowPage(true);
     }, [page])
 
     return (
-        <div className='w-full col-span-12 flex flex-col justify-between gap-2'>
-            <div className='bg-item-primary p-4 rounded-md flex justify-end items-center gap-4 text-white'>
+        showPage && <div className='w-full col-span-12 flex flex-col justify-between gap-2'>
+            <div className='bg-item-primary p-4 rounded-md flex justify-between items-center gap-4 text-white'>
                 <div className='flex items-center justify-center gap-4'>
-                    <div className=''>
-                        <Tooltip id="filterx" />
-                        <LuFilterX className='cursor-pointer' onClick={() => {
-                            setShowData(getDataForPage(page, data, itemsPerPage))
-                        }} data-tooltip-id="filterx" data-tooltip-content="Unfilter" />
-                    </div>
-                    <div className=''>
-                        <Tooltip id="eyeslash" />
-                        <Tooltip id="eye" />
-                        {
-                            showAllData ? <BsEyeSlash className='cursor-pointer' onClick={() => {
-                                setShowAllData(!showAllData)
-                                setShowData(getDataForPage(1, data, itemsPerPage));
-                                setPage(1)
-
-                            }} data-tooltip-id="eyeslash" data-tooltip-content="Show Limited" />
-                                : <BsEye className='cursor-pointer' onClick={() => {
-                                    setShowAllData(!showAllData)
-                                    setShowData(data)
-                                }} data-tooltip-id="eye" data-tooltip-content="Show All" />
-                        }
-                    </div>
+                    <select className='bg-transparent border-b-2 border-white focus:outline-none w-40'>
+                        <option>hi</option>
+                        <option>hi</option>
+                        <option>hi</option>
+                        <option>hi</option>
+                    </select>
+                    <input type='text' className='bg-transparent border-b-2 border-white focus:outline-none px-2' />
                 </div>
-                {
-                    !showAllData && <div className='text-white font-semibold flex items-center justify-end gap-2'>
-                        <button disabled={page === 1 ? true : false} onClick={() => { setPage(page - 1) }}>
-                            <BiChevronLeft />
-                        </button>
-                        <div>{page} of {calculatePages()}</div>
-                        <button disabled={page === calculatePages() ? true : false} onClick={() => { setPage(page + 1) }}>
-                            <BiChevronRight />
-                        </button>
+                <div className='flex items-center justify-end gap-4'>
+                    <div className='flex items-center justify-center gap-4'>
+                        <div className=''>
+                            <Tooltip id="filterx" />
+                            <Tooltip id="filter" />
+                            {
+                                filtered ? <LuFilterX className='cursor-pointer focus:outline-none' onClick={() => {
+                                    setFiltered(!filtered)
+                                }} data-tooltip-id="filterx" data-tooltip-content="Unfilter" />
+                                    :
+                                    <LuFilter className='cursor-pointer focus:outline-none' onClick={() => {
+                                        setFiltered(!filtered)
+                                    }} data-tooltip-id="filter" data-tooltip-content="Filter" />
+                            }
+                        </div>
+                        <div>
+                            <Tooltip id="eyeslash" />
+                            <Tooltip id="eye" />
+                            {
+                                showAllData ? <BsEyeSlash className='cursor-pointer focus:outline-none' onClick={() => {
+                                    setShowAllData(!showAllData)
+                                    setShowData(getDataForPage(1, data, itemsPerPage));
+                                    setPage(1)
+
+                                }} data-tooltip-id="eyeslash" data-tooltip-content="Show Limited" />
+                                    : <BsEye className='cursor-pointer focus:outline-none' onClick={() => {
+                                        setShowAllData(!showAllData)
+                                        setShowData(data)
+                                    }} data-tooltip-id="eye" data-tooltip-content="Show All" />
+                            }
+                        </div>
                     </div>
-                }
+                    {
+                        !showAllData && <div className='text-white font-semibold flex items-center justify-end gap-2'>
+                            <button disabled={page === 1 ? true : false} onClick={() => { setPage(page - 1) }}>
+                                <BiChevronLeft />
+                            </button>
+                            <div>{page} of {calculatePages()}</div>
+                            <button disabled={page === calculatePages() ? true : false} onClick={() => { setPage(page + 1) }}>
+                                <BiChevronRight />
+                            </button>
+                        </div>
+                    }
+                </div>
             </div>
             <div className='bg-item-primary p-4 rounded-md h-full flex flex-col justify-between'>
                 <table className='w-full'>
