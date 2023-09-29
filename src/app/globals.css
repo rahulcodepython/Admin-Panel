@@ -25,3 +25,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #28243d;
 }
+
+.ReactCollapse--collapse {
+    transition: height 500ms;
+}
