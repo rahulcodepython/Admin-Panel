@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import React from 'react'
 import { Data } from '@/data/data/data'
+import ProfileSidenavItem from './components/client/ProfileSidenavItem'
 
 const ProfileLayout = ({ children }) => {
     return (
@@ -12,9 +12,7 @@ const ProfileLayout = ({ children }) => {
                 <div className='flex flex-col items-start justify-start gap-1 w-full font-semibold'>
                     {
                         Data.user.navigation.map((item, index) => {
-                            return <Link href={item.link} key={index} className="w-full p-2 text-black rounded-lg hover:bg-black hover:text-white cursor-pointer transition-all ease-in-out duration-300">
-                                {item.title}
-                            </Link>
+                            return <ProfileSidenavItem item={item} key={index} />
                         })
                     }
                 </div>

@@ -14,7 +14,32 @@ export const Data = {
                 {
                     icon: <BiSolidUserPin />,
                     title: "Profile",
-                    link: '/user/profile/overview'
+                    sub: [
+                        {
+                            title: "Overview",
+                            link: '/user/profile/overview'
+                        },
+                        {
+                            title: "Work & Education",
+                            link: '/user/profile/experience'
+                        },
+                        {
+                            title: "Places Lived",
+                            link: '/user/profile/residence'
+                        },
+                        {
+                            title: "Contact & Basic Info",
+                            link: '/user/profile/details'
+                        },
+                        {
+                            title: "Relationship",
+                            link: '/user/profile/relationship'
+                        },
+                        {
+                            title: "About",
+                            link: '/user/profile/about'
+                        }
+                    ]
                 },
                 {
                     icon: <GiThreeFriends />,

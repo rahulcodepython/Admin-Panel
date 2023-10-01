@@ -15,7 +15,7 @@ const Sidebar = ({ toggleSidebar, setToggleSidebar, sidebarRef }) => {
                 </svg>
             </button>
             <div className="flex flex-col py-4 overflow-y-scroll divide-y-2 divide-slate-500 scroll-smooth">
-                <ul>
+                <ul className='flex flex-col gap-1'>
                     {
                         Data.sidebar.map((item, index) => {
                             return <SidebarItemLayout item={item} key={index} />
