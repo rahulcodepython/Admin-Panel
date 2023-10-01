@@ -21,7 +21,7 @@ const Navbar = ({ setToggleSidebar, toggleSidebar, toggleNavbar }) => {
                 <Tooltip id="create" />
                 <BiBell className="text-2xl cursor-pointer" data-tooltip-id="notification" data-tooltip-content="Notification" />
                 <Tooltip id="notification" />
-                <Image width={40} height={40} className="w-10 h-10 rounded-full cursor-pointer" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80" alt="User dropdown" />
+                <Image width={40} height={40} className="w-10 h-10 rounded-full cursor-pointer" src="/user.png" alt="User dropdown" />
             </div>
         </nav>
     )
