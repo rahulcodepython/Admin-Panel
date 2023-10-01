@@ -184,7 +184,7 @@ const NotFound = () => {
                             </svg>
 
                         </div>
-                        <p class="text-base md:text-lg font-semibold p-2 mb-4">The page you were looking for doesn't exist
+                        <p class="text-base md:text-lg font-semibold p-2 mb-4">The page you were looking for {`doesn't`} exist
                         </p>
                         <Link href="/" class="bg-transparent hover:bg-black text-black hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-black transition-colors ease-in-out duration-300 uppercase font-semibold">
                             go back
