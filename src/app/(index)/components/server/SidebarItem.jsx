@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const SidebarItem = ({ item }) => {
     return (
-        <Link href={"#"} className="flex items-center">
+        <Link href={item.link ? item.link : '#'} className="flex items-center">
             {item.icon}
             <span className='ml-3'>
                 {item.title}

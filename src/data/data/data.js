@@ -4,7 +4,8 @@ export const Data = {
     sidebar: [
         {
             icon: <AiFillPieChart />,
-            title: "Dashboard"
+            title: "Dashboard",
+            link: '/'
         },
         {
             icon: <FiUser />,
@@ -12,21 +13,25 @@ export const Data = {
             sub: [
                 {
                     icon: <BiSolidUserPin />,
-                    title: "Profile"
+                    title: "Profile",
+                    link: '/user/profile'
                 },
                 {
                     icon: <GiThreeFriends />,
-                    title: "Friends"
+                    title: "Friends",
+                    link: '/user/friends'
                 },
                 {
                     icon: <LiaVideoSolid />,
-                    title: "Videos"
+                    title: "Videos",
+                    link: '/user/videos'
                 },
             ]
         },
         {
             icon: <AiFillPieChart />,
-            title: "Dashboard"
+            title: "Dashboard",
+            link: '/'
         },
     ],
 }

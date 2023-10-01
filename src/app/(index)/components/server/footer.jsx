@@ -3,7 +3,7 @@ import { AiOutlineCopyright } from '@/data/icons/icons'
 
 const Footer = ({ showSidebar }) => {
     return (
-        <footer className="py-3 bg-black w-full flex items-center justify-between">
+        <footer className="py-3 bg-black w-full flex items-center justify-between mt-4">
             <div className='flex items-center text-white gap-2 font-semibold pl-3 sm:pl-5 lg:pl-10'>
                 <AiOutlineCopyright />
                 2023, Made by Rahul Das

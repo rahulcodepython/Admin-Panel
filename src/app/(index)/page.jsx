@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const Page = () => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-12 gap-5 my-4 mx-auto container'>
+        <div className='grid grid-cols-1 md:grid-cols-12 gap-5'>
             <div className='w-full flex flex-col items-start justify-evenly gap-3 h-full text-black bg-slate-200 rounded-lg p-5 col-span-12 md:col-span-4'>
                 <div className='flex flex-col gap-1'>
                     <span className='text-xl font-semibold'>

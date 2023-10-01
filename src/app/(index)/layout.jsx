@@ -6,7 +6,9 @@ const DashboardLayout = ({ children }) => {
     return (
         <>
             <NavbarSidebarLayout />
-            {children}
+            <div className='my-4 mx-auto container'>
+                {children}
+            </div>
             <Footer />
         </>
     )

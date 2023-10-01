@@ -9,7 +9,7 @@ const SidebarItemLayout = ({ item }) => {
 
     return (
         <>
-            <li className="flex items-center justify-between p-2 text-white rounded-lg hover:bg-gray-100 group hover:text-gray-700" onClick={() => setIsOpened(pre => !isOpened)}>
+            <li className="flex items-center justify-between p-2 text-white rounded-lg hover:bg-gray-100 hover:text-gray-700 cursor-pointer" onClick={() => setIsOpened(pre => !isOpened)}>
                 <SidebarItem item={item} />
                 {item.sub ? isOpened ? <BsChevronUp /> : <BsChevronDown /> : null}
             </li>
@@ -18,7 +18,7 @@ const SidebarItemLayout = ({ item }) => {
                     <div className='ml-3'>
                         {
                             item.sub.map((item, index) => {
-                                return <li key={index} className="flex items-center justify-between p-2 text-white rounded-lg hover:bg-gray-100 group hover:text-gray-700">
+                                return <li key={index} className="flex items-center justify-between p-2 text-white rounded-lg hover:bg-gray-100 hover:text-gray-700 cursor-pointer">
                                     <SidebarItem item={item} />
                                 </li>
                             })
