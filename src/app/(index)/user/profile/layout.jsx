@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { Data } from '@/data/data/data'
 
 const ProfileLayout = ({ children }) => {
     return (
@@ -9,27 +10,13 @@ const ProfileLayout = ({ children }) => {
                     profile
                 </span>
                 <div className='flex flex-col items-start justify-start gap-1 w-full font-semibold'>
-                    <Link href={'/user/profile/overview'} className="w-full p-2 text-black rounded-lg hover:bg-black hover:text-white cursor-pointer transition-all ease-in-out duration-300">
-                        Overview
-                    </Link>
-                    <Link href={'/user/profile/experience'} className="w-full p-2 text-black rounded-lg hover:bg-black hover:text-white cursor-pointer transition-all ease-in-out duration-300">
-                        Work & Education
-                    </Link>
-                    <Link href={'/user/profile/residence'} className="w-full p-2 text-black rounded-lg hover:bg-black hover:text-white cursor-pointer transition-all ease-in-out duration-300">
-                        Place Lived
-                    </Link>
-                    <Link href={'/user/profile/details'} className="w-full p-2 text-black rounded-lg hover:bg-black hover:text-white cursor-pointer transition-all ease-in-out duration-300">
-                        Contact & Basic Info
-                    </Link>
-                    <Link href={'/user/profile/relationship'} className="w-full p-2 text-black rounded-lg hover:bg-black hover:text-white cursor-pointer transition-all ease-in-out duration-300">
-                        Family & Relationship
-                    </Link>
-                    <Link href={'/user/profile/about'} className="w-full p-2 text-black rounded-lg hover:bg-black hover:text-white cursor-pointer transition-all ease-in-out duration-300">
-                        Details & About You
-                    </Link>
-                    <Link href={'/user/profile/overview'} className="w-full p-2 text-black rounded-lg hover:bg-black hover:text-white cursor-pointer transition-all ease-in-out duration-300">
-                        Life Eventes
-                    </Link>
+                    {
+                        Data.user.navigation.map((item, index) => {
+                            return <Link href={item.link} key={index} className="w-full p-2 text-black rounded-lg hover:bg-black hover:text-white cursor-pointer transition-all ease-in-out duration-300">
+                                {item.title}
+                            </Link>
+                        })
+                    }
                 </div>
             </div>
             <div className='bg-slate-200 rounded-md p-4 flex flex-col items-start justify-start gap-8 col-span-6 w-full'>

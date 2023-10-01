@@ -35,8 +35,62 @@ export const Data = {
         },
     ],
     user: {
+        navigation: [
+            {
+                title: "Overview",
+                link: '/user/profile/overview'
+            },
+            {
+                title: "Work & Education",
+                link: '/user/profile/experience'
+            },
+            {
+                title: "Places Lived",
+                link: '/user/profile/residence'
+            },
+            {
+                title: "Contact & Basic Info",
+                link: '/user/profile/details'
+            },
+            {
+                title: "Relationship",
+                link: '/user/profile/relationship'
+            },
+            {
+                title: "About",
+                link: '/user/profile/about'
+            }
+        ],
         profile: {
-            overview: [],
+            overview: [
+                {
+                    title: "OverView",
+                    data: [
+                        {
+                            title: 'Works at Web Developer',
+                            subtitle: 'Web Developer',
+                            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, voluptatem?'
+                        },
+                        {
+                            title: 'BCA (Bachelor of Computer Application) at Brainware University',
+                            subtitle: 'from Aug, 28, 2023 to Present',
+                            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, voluptatem?'
+                        },
+                        {
+                            title: 'Kalyangarh, West Bengal',
+                            subtitle: 'from Aug, 28, 2023 to Present',
+                            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, voluptatem?'
+                        },
+                        {
+                            title: 'Single',
+                        },
+                        {
+                            title: 'rahulcodepython.vercel.app',
+                            subtitle: 'Website'
+                        },
+                    ]
+                }
+            ],
             experience: [
                 {
                     title: "Work",
