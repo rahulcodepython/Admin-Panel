@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Navbar from './navbar'
+import Navbar from '../server/Navbar'
 import Sidebar from '../server/Sidebar'
 
 const NavbarSidebarLayout = () => {

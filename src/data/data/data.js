@@ -14,7 +14,7 @@ export const Data = {
                 {
                     icon: <BiSolidUserPin />,
                     title: "Profile",
-                    link: '/user/profile'
+                    link: '/user/profile/overview'
                 },
                 {
                     icon: <GiThreeFriends />,
