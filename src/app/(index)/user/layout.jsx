@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import React from 'react'
-import { BiSolidLock, BsLink, MdVerified, FiEdit } from '@/data/icons/icons'
+import { BiSolidLock, BsLink, MdVerified } from '@/data/icons/icons'
+import EditModalLayout from './components/client/EditModalLayout'
 
 const UserLayout = ({ children }) => {
     return (
         <div className='flex flex-col gap-4'>
             <div className='flex flex-col'>
-                <Image src={'/profile-banner.png'} width={2250} height={500} className='rounded-t-lg' alt='...' />
+                <Image src={'/profile-banner.png'} width={2250} height={500} priority={false} className='rounded-t-lg' alt='...' />
                 <div className='bg-black text-white rounded-b-lg relative px-4 py-5'>
                     <Image src={'/user.png'} width={120} height={120} className='absolute top-[1.85rem] left-4 rounded-lg' alt='...' />
                     <div className='flex flex-col items-start justify-start gap-2 mx-40'>
@@ -53,12 +54,13 @@ const UserLayout = ({ children }) => {
                         </div>
                     </div>
                     <div className='absolute bottom-4 right-4 flex items-center justify-end gap-4'>
-                        <button className='bg-white text-black rounded-md px-4 py-2 font-semibold flex items-center justify-center gap-2'>
+                        {/* <button className='bg-white text-black rounded-md px-4 py-2 font-semibold flex items-center justify-center gap-2'>
                             <FiEdit />
                             <span>
                                 Edit
                             </span>
-                        </button>
+                        </button> */}
+                        <EditModalLayout />
                         <button className='bg-white text-black rounded-md px-4 py-2 font-semibold flex items-center justify-center gap-2'>
                             <BsLink />
                             <span>
