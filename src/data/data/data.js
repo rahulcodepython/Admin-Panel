@@ -53,37 +53,32 @@ export const Data = {
                 },
             ]
         },
-        {
-            icon: <AiFillPieChart />,
-            title: "Dashboard",
-            link: '/'
-        },
     ],
     user: {
         navigation: [
             {
-                title: "Overview",
-                link: '/user/profile/overview'
+                title: ["Overview", "Introduction"],
+                link: ['/user/profile/overview', '/user/profile/edit/intro',]
             },
             {
                 title: "Work & Education",
-                link: '/user/profile/experience'
+                link: ['/user/profile/experience', '/user/profile/edit/experience']
             },
             {
                 title: "Places Lived",
-                link: '/user/profile/residence'
+                link: ['/user/profile/residence', '/user/profile/edit/residence']
             },
             {
                 title: "Contact & Basic Info",
-                link: '/user/profile/details'
+                link: ['/user/profile/details', '/user/profile/edit/details']
             },
             {
                 title: "Relationship",
-                link: '/user/profile/relationship'
+                link: ['/user/profile/relationship', '/user/profile/edit/relationship']
             },
             {
                 title: "About",
-                link: '/user/profile/about'
+                link: ['/user/profile/about', '/user/profile/edit/about']
             }
         ],
         profile: {

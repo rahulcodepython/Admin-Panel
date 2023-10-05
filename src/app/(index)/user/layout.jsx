@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 import { BiSolidLock, BsLink, MdVerified } from '@/data/icons/icons'
-import EditModalLayout from './components/client/EditModalLayout'
+// import { FiEdit } from '@/data/icons/icons'
+// import Link from 'next/link'
+import EditViewButton from './components/server/EditViewButton'
 
 const UserLayout = ({ children }) => {
     return (
@@ -54,13 +56,7 @@ const UserLayout = ({ children }) => {
                         </div>
                     </div>
                     <div className='absolute bottom-4 right-4 flex items-center justify-end gap-4'>
-                        {/* <button className='bg-white text-black rounded-md px-4 py-2 font-semibold flex items-center justify-center gap-2'>
-                            <FiEdit />
-                            <span>
-                                Edit
-                            </span>
-                        </button> */}
-                        <EditModalLayout />
+                        <EditViewButton />
                         <button className='bg-white text-black rounded-md px-4 py-2 font-semibold flex items-center justify-center gap-2'>
                             <BsLink />
                             <span>
