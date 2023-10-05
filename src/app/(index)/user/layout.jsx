@@ -1,9 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { BiSolidLock, BsLink, MdVerified } from '@/data/icons/icons'
-// import { FiEdit } from '@/data/icons/icons'
-// import Link from 'next/link'
-import EditViewButton from './components/server/EditViewButton'
+import EditViewButton from './components/client/EditViewButton'
 
 const UserLayout = ({ children }) => {
     return (
