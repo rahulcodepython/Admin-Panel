@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import { BiSolidLock, BsLink, MdVerified } from '@/data/icons/icons'
+import { BiSolidLock, BsLink, MdVerified, BiSolidLockOpen } from '@/data/icons/icons'
 import EditViewButton from './components/client/EditViewButton'
 import Link from 'next/link'
 
@@ -64,6 +64,7 @@ const UserLayout = ({ children }) => {
                         </button>
                         <button className='bg-white text-black rounded-md px-4 py-2 font-semibold flex items-center justify-center gap-2'>
                             <BiSolidLock />
+                            <BiSolidLockOpen />
                             <span>
                                 Locked
                             </span>

@@ -14,6 +14,7 @@ const EditViewButton = () => {
 
     const customStyles = {
         content: {
+            width: '50%',
             border: 'none',
             background: 'none',
             borderRadius: '0px',
