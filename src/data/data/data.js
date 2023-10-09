@@ -17,7 +17,7 @@ export const Data = {
                     sub: [
                         {
                             title: "Overview",
-                            link: '/user/profile/overview'
+                            link: '/user/profile/'
                         },
                         {
                             title: "Work & Education",
@@ -57,28 +57,28 @@ export const Data = {
     user: {
         navigation: [
             {
-                title: ["Overview", "Introduction"],
-                link: ['/user/profile/overview', '/user/profile/edit/intro',]
+                title: "Overview",
+                link: '/user/profile'
             },
             {
                 title: "Work & Education",
-                link: ['/user/profile/experience', '/user/profile/edit/experience']
+                link: '/user/profile/experience'
             },
             {
                 title: "Places Lived",
-                link: ['/user/profile/residence', '/user/profile/edit/residence']
+                link: '/user/profile/residence'
             },
             {
                 title: "Contact & Basic Info",
-                link: ['/user/profile/details', '/user/profile/edit/details']
+                link: '/user/profile/details'
             },
             {
                 title: "Relationship",
-                link: ['/user/profile/relationship', '/user/profile/edit/relationship']
+                link: '/user/profile/relationship'
             },
             {
                 title: "About",
-                link: ['/user/profile/about', '/user/profile/edit/about']
+                link: '/user/profile/about'
             }
         ],
         profile: {

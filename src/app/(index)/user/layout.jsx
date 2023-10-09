@@ -2,13 +2,14 @@ import Image from 'next/image'
 import React from 'react'
 import { BiSolidLock, BsLink, MdVerified } from '@/data/icons/icons'
 import EditViewButton from './components/client/EditViewButton'
+import Link from 'next/link'
 
 const UserLayout = ({ children }) => {
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col divide-y-2 divide-gray-200'>
             <div className='flex flex-col'>
                 <Image src={'/profile-banner.png'} width={2250} height={500} priority={false} className='rounded-t-lg' alt='...' />
-                <div className='bg-black text-white rounded-b-lg relative px-4 py-5'>
+                <div className='bg-black text-white relative px-4 py-5'>
                     <Image src={'/user.png'} width={120} height={120} className='absolute top-[1.85rem] left-4 rounded-lg' alt='...' />
                     <div className='flex flex-col items-start justify-start gap-2 mx-40'>
                         <div className='flex flex-col items-start justify-center'>
@@ -70,10 +71,11 @@ const UserLayout = ({ children }) => {
                     </div>
                 </div>
             </div>
-            <div className='flex justify-start items-center gap-4 font-semibold uppercase'>
-                <div className='px-8 py-3 bg-black text-white rounded-md cursor-pointer'>profile</div>
-                <div className='px-8 py-3 bg-black text-white rounded-md cursor-pointer'>friends</div>
-                <div className='px-8 py-3 bg-black text-white rounded-md cursor-pointer'>videos</div>
+            <div className='flex justify-start items-center gap-4 font-semibold uppercase bg-black px-4 py-4 rounded-b-lg'>
+                <Link href={'/user'} className='px-4 py-2 text-sm bg-white text-black rounded-md cursor-pointer'>Posts</Link>
+                <Link href={'/user/profile'} className='px-4 py-2 text-sm bg-white text-black rounded-md cursor-pointer'>Profile</Link>
+                <Link href={'/'} className='px-4 py-2 text-sm bg-white text-black rounded-md cursor-pointer'>Friends</Link>
+                <Link href={'/'} className='px-4 py-2 text-sm bg-white text-black rounded-md cursor-pointer'>videos</Link>
             </div>
             <div>
                 {children}

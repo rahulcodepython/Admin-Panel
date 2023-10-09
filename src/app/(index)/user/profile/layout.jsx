@@ -5,7 +5,7 @@ import ProfileSidenavItem from './components/client/ProfileSidenavItem'
 const ProfileLayout = ({ children }) => {
     return (
         <div className='grid grid-cols-8 gap-4'>
-            <div className='bg-slate-200 rounded-md p-4 flex flex-col items-start justify-start gap-4 col-span-2'>
+            <div className='bg-gray-200 rounded-md p-4 flex flex-col items-start justify-start gap-4 col-span-2'>
                 <span className='font-semibold uppercase text-lg'>
                     profile
                 </span>
@@ -17,7 +17,7 @@ const ProfileLayout = ({ children }) => {
                     }
                 </div>
             </div>
-            <div className='bg-slate-200 rounded-md p-4 flex flex-col items-start justify-start gap-8 col-span-6 w-full'>
+            <div className='bg-gray-200 rounded-md p-4 flex flex-col items-start justify-start gap-8 col-span-6 w-full'>
                 {children}
             </div>
         </div>
