@@ -97,11 +97,11 @@ const EditViewButton = () => {
                                                         </div>
                                                     </section>
                                                         : bannarImage.map((image, index) => {
-                                                            return <div className='relative flex justify-center items-center' key={index}>
-                                                                <Image src={image.data_url} width={300} height={300} alt='user image' className='w-[80%] h-36 rounded-lg' />
-                                                                <div className='absolute top-0 right-0 text-2xl flex flex-col items-center'>
-                                                                    <BiCamera onClick={() => onImageUpdate(index)} />
-                                                                    <AiOutlineClose onClick={() => onImageRemove(index)} />
+                                                            return <div className='relative flex justify-center items-center group' key={index}>
+                                                                <Image src={image.data_url} width={300} height={300} alt='user image' className='w-full h-40 rounded-lg' />
+                                                                <div className='bg-white bg-opacity-0 absolute w-full h-full text-2xl flex gap-4 items-center justify-center group-hover:bg-opacity-50 transition-all duration-300 ease-in-out'>
+                                                                    <BiCamera onClick={() => onImageUpdate(index)} className='cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out' />
+                                                                    <AiOutlineClose onClick={() => onImageRemove(index)} className='cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out' />
                                                                 </div>
                                                             </div>
                                                         })
@@ -133,10 +133,14 @@ const EditViewButton = () => {
                                                         </div>
                                                     </section>
                                                         : userImage.map((image, index) => {
-                                                            return <div className='relative flex items-center justify-center' key={index}>
-                                                                <Image src={image.data_url} width={300} height={300} alt='user image' className='rounded-full w-60 h-60' />
-                                                                <BiCamera onClick={() => onImageUpdate(index)} className='absolute top-0 right-6 text-2xl' />
-                                                                <AiOutlineClose onClick={() => onImageRemove(index)} className='absolute top-0 right-0 text-2xl' />
+                                                            return <div key={index} className='w-full flex items-center justify-center'>
+                                                                <div className='relative flex items-center justify-center group w-60 h-60 rounded-full bg-red-600'>
+                                                                    <Image src={image.data_url} width={300} height={300} alt='user image' className='rounded-full w-60 h-60' />
+                                                                    <div className='bg-white bg-opacity-0 absolute w-full h-full text-2xl flex gap-4 items-center justify-center group-hover:bg-opacity-50 transition-all duration-300 ease-in-out'>
+                                                                        <BiCamera onClick={() => onImageUpdate(index)} className='cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out' />
+                                                                        <AiOutlineClose onClick={() => onImageRemove(index)} className='cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out' />
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         })
                                                 }
