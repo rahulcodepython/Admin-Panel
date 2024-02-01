@@ -1,17 +1,15 @@
 import React from 'react'
-import NavbarSidebarLayout from './components/client/NavbarSidebarLayout '
-import Footer from '@/app/(index)/components/server/Footer'
+import Navbar from './components/client/Navbar'
 
-const DashboardLayout = ({ children }) => {
+const IndexLayout = ({ children }) => {
     return (
-        <>
-            <NavbarSidebarLayout />
-            <div className='my-4 mx-auto container'>
+        <React.Fragment>
+            <Navbar />
+            <main className='p-6'>
                 {children}
-            </div>
-            <Footer />
-        </>
+            </main>
+        </React.Fragment>
     )
 }
 
-export default DashboardLayout
+export default IndexLayout
