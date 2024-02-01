@@ -19,10 +19,22 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Badge } from "@/components/ui/badge"
+import { Context } from '@/context/Context';
+import {
+    Sheet,
+    SheetContent,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+    SheetClose,
+} from "@/components/ui/sheet"
+import Image from "next/image"
+import Sidebar from '../server/Sidebar';
 
 const Navbar = () => {
     const [language, setLanguage] = React.useState(0)
     const [notificationStatus, setNotificationStatus] = React.useState('default')
+    const [toogleHeader, setToogleHeader] = React.useState(false)
     const [notifications, setNotifications] = React.useState([
         {
             id: 1,
@@ -117,8 +129,8 @@ const Navbar = () => {
             },
         ]
     ]
-    const [toogleHeader, setToogleHeader] = React.useState(false)
-    const header = React.useRef(null)
+
+    const { setSidebarIsOpen } = React.useContext(Context)
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -128,48 +140,65 @@ const Navbar = () => {
                 setToogleHeader(pre => false)
             }
         }
+        window.scrollY > 0 ? setToogleHeader(pre => true) : setToogleHeader(pre => false)
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
     return (
-        <header className='flex sticky w-full top-0' ref={header}>
+        <header className='flex sticky w-full top-0'>
             <nav className={`mx-6 py-[10px] ${toogleHeader ? 'px-6 bg-[#312D4B]/[0.85] backdrop-blur-[9px] shadow-sm' : 'px-0 bg-transparent'} dark:text-foreground flex w-full transition-all ease-in-out duration-300 rounded-b-md`}>
                 <div className='flex items-center justify-between gap-4 w-full'>
                     <div className='flex items-center justify-between gap-2'>
-                        <Button variant='icon' size='icon' className="desktop:hidden text-xl shadow-none focus:ring-0 focus-visible:ring-0 border-none outline-none">
-                            <MdMenu className='w-[1.7rem] h-[1.7rem]' />
-                        </Button>
+                        <Sheet>
+                            <SheetTrigger>
+                                <Button variant='icon' size='icon' onClick={() => setSidebarIsOpen(pre => !pre)} className=" text-xl shadow-none focus:ring-0 focus-visible:ring-0 border-none outline-none">
+                                    <MdMenu className='w-[1.7rem] h-[1.7rem]' />
+                                </Button>
+                            </SheetTrigger>
+                            <SheetContent side={'left'} className="w-[260px] p-0 bg-white dark:bg-itembackground">
+                                <SheetHeader className="flex items-center justify-between flex-row space-y-0 p-5 shadow-md">
+                                    <SheetTitle className="uppercase text-xl flex items-center justify-center">
+                                        <Image src={'/logo.png'} width={27} height={27} alt="logo" />
+                                        <span className="ml-[10px]">meterio</span>
+                                    </SheetTitle>
+                                    <SheetClose className="flex items-center justify-center rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-0 focus:ring-offset-0 disabled:pointer-events-none">
+                                        <RxCross2 className="w-4 h-4" />
+                                    </SheetClose>
+                                </SheetHeader>
+                                <Sidebar />
+                            </SheetContent>
+                        </Sheet>
                         <Button variant='icon' size='icon' className="text-xl shadow-none focus:ring-0 focus-visible:ring-0 border-none outline-none">
                             <MdOutlineSearch className='w-[1.7rem] h-[1.7rem]' />
                         </Button>
-                        <Button className='whitespace-nowrap text-highlightedtextdark gap-2 p-0 bg-transparent outline-none shadow-none border-none focus:ring-0 focus:ring-offset-0'>
+                        <Button className='hidden desktop:flex whitespace-nowrap text-highlightedtextdark gap-2 p-0 bg-transparent hover:bg-transparent outline-none shadow-none border-none focus:ring-0 focus:ring-offset-0'>
                             Search <SiWindows /> + K
                         </Button>
                     </div>
                     <div className='flex items-center justify-between'>
                         <Menubar className="bg-transparent p-0 space-x-0 border-none shadow-none h-auto">
                             <MenubarMenu>
-                                <MenubarTrigger className="bg-transparent hover:bg-itemhover/10 focus:bg-itemhover/40 dark:focus:bg-itemhover/10 data-[state=open]:bg-itemhover/40 dark:data-[state=open]:bg-itemhover/10 rounded-full cursor-pointer p-[7px]">
+                                <MenubarTrigger className="bg-transparent hover:bg-itemhover/5 focus:bg-itemhover/40 dark:focus:bg-itemhover/5 data-[state=open]:bg-itemhover/40 dark:data-[state=open]:bg-itemhover/5 rounded-full cursor-pointer p-[7px]">
                                     <span className="shadow-none focus:ring-0 focus-visible:ring-0 border-none outline-none">
                                         <HiLanguage className='w-6 h-6' />
                                     </span>
                                 </MenubarTrigger>
                                 <MenubarContent className="bg-white dark:bg-itembackground min-w-[160px] w-[160px] h-[130px] px-0 py-2 border-none">
-                                    <MenubarItem className={`${language === 0 ? 'bg-textbg text-texthover focus:bg-textbg focus:text-texthover' : 'hover:bg-itemhover/40 focus:bg-itemhover/40 dark:hover:bg-itemhover/10 dark:focus:bg-itemhover/10'} cursor-pointer h-[38px] px-4 py-2 font-normal rounded-none`} onClick={() => setLanguage(0)}>
+                                    <MenubarItem className={`${language === 0 ? 'bg-textbg text-texthover focus:bg-textbg focus:text-texthover' : 'hover:bg-itemhover/40 focus:bg-itemhover/40 dark:hover:bg-itemhover/5 dark:focus:bg-itemhover/5'} cursor-pointer h-[38px] px-4 py-2 font-normal rounded-none`} onClick={() => setLanguage(0)}>
                                         English
                                     </MenubarItem>
-                                    <MenubarItem className={`${language === 1 ? 'bg-textbg text-texthover focus:bg-textbg focus:text-texthover' : 'hover:bg-itemhover/40 focus:bg-itemhover/40 dark:hover:bg-itemhover/10 dark:focus:bg-itemhover/10'} cursor-pointer h-[38px] px-4 py-2 font-normal rounded-none`} onClick={() => setLanguage(1)}>
+                                    <MenubarItem className={`${language === 1 ? 'bg-textbg text-texthover focus:bg-textbg focus:text-texthover' : 'hover:bg-itemhover/40 focus:bg-itemhover/40 dark:hover:bg-itemhover/5 dark:focus:bg-itemhover/5'} cursor-pointer h-[38px] px-4 py-2 font-normal rounded-none`} onClick={() => setLanguage(1)}>
                                         French
                                     </MenubarItem>
-                                    <MenubarItem className={`${language === 2 ? 'bg-textbg text-texthover focus:bg-textbg focus:text-texthover' : 'hover:bg-itemhover/40 focus:bg-itemhover/40 dark:hover:bg-itemhover/10 dark:focus:bg-itemhover/10'} cursor-pointer h-[38px] px-4 py-2 font-normal rounded-none`} onClick={() => setLanguage(2)}>
+                                    <MenubarItem className={`${language === 2 ? 'bg-textbg text-texthover focus:bg-textbg focus:text-texthover' : 'hover:bg-itemhover/40 focus:bg-itemhover/40 dark:hover:bg-itemhover/5 dark:focus:bg-itemhover/5'} cursor-pointer h-[38px] px-4 py-2 font-normal rounded-none`} onClick={() => setLanguage(2)}>
                                         Arabic
                                     </MenubarItem>
                                 </MenubarContent>
                             </MenubarMenu>
                             <ToogleTheme />
                             <MenubarMenu>
-                                <MenubarTrigger className="bg-transparent hover:bg-itemhover/10 focus:bg-itemhover/40 dark:focus:bg-itemhover/10 data-[state=open]:bg-itemhover/40 dark:data-[state=open]:bg-itemhover/10 rounded-full cursor-pointer p-[7px]">
+                                <MenubarTrigger className="bg-transparent hover:bg-itemhover/5 focus:bg-itemhover/40 dark:focus:bg-itemhover/5 data-[state=open]:bg-itemhover/40 dark:data-[state=open]:bg-itemhover/5 rounded-full cursor-pointer p-[7px]">
                                     <span className="shadow-none focus:ring-0 focus-visible:ring-0 border-none outline-none">
                                         <RiStarSmileLine className='w-6 h-6' />
                                     </span>
@@ -181,7 +210,7 @@ const Navbar = () => {
                                         </span>
                                         <TooltipProvider className="p-0">
                                             <Tooltip>
-                                                <TooltipTrigger className='p-[7px] w-9 h-9 rounded-full hover:bg-itemhover/10 cursor-pointer flex items-center justify-center'>
+                                                <TooltipTrigger className='p-[7px] w-9 h-9 rounded-full hover:bg-itemhover/5 cursor-pointer flex items-center justify-center'>
                                                     <FaPlus />
                                                 </TooltipTrigger>
                                                 <TooltipContent className="bg-white text-black rounded-sm text-[13px] py-">
@@ -196,8 +225,8 @@ const Navbar = () => {
                                                 return <div className='grid grid-cols-2 divide-x divide-slate-500/40' key={index}>
                                                     {
                                                         item.map(item => {
-                                                            return <MenubarItem className="p-6 cursor-pointer flex flex-col items-center justify-center focus:bg-itemhover/40 dark:focus:bg-itemhover/10 space-y-2 rounded-none" key={item.id}>
-                                                                <span className='p-3 rounded-full bg-itemhover/40 dark:bg-itemhover/10 text-2xl'>
+                                                            return <MenubarItem className="p-6 cursor-pointer flex flex-col items-center justify-center focus:bg-itemhover/40 dark:focus:bg-itemhover/5 space-y-2 rounded-none" key={item.id}>
+                                                                <span className='p-3 rounded-full bg-itemhover/40 dark:bg-itemhover/5 text-2xl'>
                                                                     {item.icon}
                                                                 </span>
                                                                 <div className='flex flex-col items-center justify-center'>
@@ -218,7 +247,7 @@ const Navbar = () => {
                                 </MenubarContent>
                             </MenubarMenu>
                             <MenubarMenu>
-                                <MenubarTrigger className="bg-transparent hover:bg-itemhover/10 focus:bg-itemhover/40 dark:focus:bg-itemhover/10 data-[state=open]:bg-itemhover/40 dark:data-[state=open]:bg-itemhover/10 rounded-full cursor-pointer p-[7px]">
+                                <MenubarTrigger className="bg-transparent hover:bg-itemhover/5 focus:bg-itemhover/40 dark:focus:bg-itemhover/5 data-[state=open]:bg-itemhover/40 dark:data-[state=open]:bg-itemhover/5 rounded-full cursor-pointer p-[7px]">
                                     <span className="shadow-none focus:ring-0 focus-visible:ring-0 border-none outline-none relative outline-offset-0">
                                         <BsBell className='w-6 h-6' />
                                         {
@@ -240,7 +269,7 @@ const Navbar = () => {
                                             {
                                                 notifications.length >= 1 ? notificationStatus === 'read' ? <TooltipProvider className="p-0">
                                                     <Tooltip>
-                                                        <TooltipTrigger className='p-[7px] w-9 h-9 rounded-full hover:bg-itemhover/10 cursor-pointer flex items-center justify-center text-lg' onClick={() => {
+                                                        <TooltipTrigger className='p-[7px] w-9 h-9 rounded-full hover:bg-itemhover/5 cursor-pointer flex items-center justify-center text-lg' onClick={() => {
                                                             setNotificationStatus(pre => 'unread')
                                                             setNotifications(pre => pre.map(notification => notification.status === 'read' ? { ...notification, status: 'unread' } : notification))
                                                         }}>
@@ -253,7 +282,7 @@ const Navbar = () => {
                                                 </TooltipProvider> :
                                                     <TooltipProvider className="p-0">
                                                         <Tooltip>
-                                                            <TooltipTrigger className='p-[7px] w-9 h-9 rounded-full hover:bg-itemhover/10 cursor-pointer flex items-center justify-center text-lg' onClick={() => {
+                                                            <TooltipTrigger className='p-[7px] w-9 h-9 rounded-full hover:bg-itemhover/5 cursor-pointer flex items-center justify-center text-lg' onClick={() => {
                                                                 setNotificationStatus(pre => 'read')
                                                                 setNotifications(pre => pre.map(notification => notification.status === 'unread' ? { ...notification, status: 'read' } : notification))
                                                             }}>
@@ -271,7 +300,7 @@ const Navbar = () => {
                                         <div className='flex flex-col divide-y divide-bordercolor dark:divide-bordercolordark'>
                                             {
                                                 notifications.map((item, index) => {
-                                                    return <div className="px-4 py-3 cursor-pointer flex items-start justify-between gap-3 focus:bg-itemhover/40 dark:focus:bg-itemhover/10 w-full hover:bg-itemhover/10" key={index}>
+                                                    return <div className="px-4 py-3 cursor-pointer flex items-start justify-between gap-3 focus:bg-itemhover/40 dark:focus:bg-itemhover/5 w-full hover:bg-itemhover/5" key={index}>
                                                         <Avatar>
                                                             <AvatarImage src={item.avatar} />
                                                             <AvatarFallback>CN</AvatarFallback>
@@ -333,25 +362,25 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                     <MenubarSeparator />
-                                    <MenubarItem className="px-4 py-2 cursor-pointer flex items-center justify-start focus:bg-itemhover/40 dark:focus:bg-itemhover/10 divide-y-0 border-none space-x-3 rounded-none">
+                                    <MenubarItem className="px-4 py-2 cursor-pointer flex items-center justify-start focus:bg-itemhover/40 dark:focus:bg-itemhover/5 divide-y-0 border-none space-x-3 rounded-none">
                                         <span className='text-[22px]'>
                                             <FiUser />
                                         </span>
                                         <span className='text-[15px]'>My Profile</span>
                                     </MenubarItem>
-                                    <MenubarItem className="px-4 py-2 cursor-pointer flex items-center justify-start focus:bg-itemhover/40 dark:focus:bg-itemhover/10 divide-y-0 border-none space-x-3 rounded-none">
+                                    <MenubarItem className="px-4 py-2 cursor-pointer flex items-center justify-start focus:bg-itemhover/40 dark:focus:bg-itemhover/5 divide-y-0 border-none space-x-3 rounded-none">
                                         <span className='text-[22px]'>
                                             <GoGear />
                                         </span>
                                         <span className='text-[15px]'>Settings</span>
                                     </MenubarItem>
-                                    <MenubarItem className="px-4 py-2 cursor-pointer flex items-center justify-start focus:bg-itemhover/40 dark:focus:bg-itemhover/10 divide-y-0 border-none space-x-3 rounded-none">
+                                    <MenubarItem className="px-4 py-2 cursor-pointer flex items-center justify-start focus:bg-itemhover/40 dark:focus:bg-itemhover/5 divide-y-0 border-none space-x-3 rounded-none">
                                         <span className='text-[22px]'>
                                             <AiOutlineDollar />
                                         </span>
                                         <span className='text-[15px]'>Pricing</span>
                                     </MenubarItem>
-                                    <MenubarItem className="px-4 py-2 cursor-pointer flex items-center justify-start focus:bg-itemhover/40 dark:focus:bg-itemhover/10 divide-y-0 border-none space-x-3 rounded-none">
+                                    <MenubarItem className="px-4 py-2 cursor-pointer flex items-center justify-start focus:bg-itemhover/40 dark:focus:bg-itemhover/5 divide-y-0 border-none space-x-3 rounded-none">
                                         <span className='text-[22px]'>
                                             <FaRegCircleQuestion />
                                         </span>
