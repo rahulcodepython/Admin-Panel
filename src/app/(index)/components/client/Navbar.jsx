@@ -28,10 +28,9 @@ import {
     SheetTrigger,
     SheetClose,
 } from "@/components/ui/sheet"
-import Image from "next/image"
-import Sidebar from '../server/Sidebar';
+import { SidebarSmallDevice } from '../server/Sidebar';
 
-const Navbar = () => {
+const Navbar = ({ width }) => {
     const [language, setLanguage] = React.useState(0)
     const [notificationStatus, setNotificationStatus] = React.useState('default')
     const [toogleHeader, setToogleHeader] = React.useState(false)
@@ -150,25 +149,16 @@ const Navbar = () => {
             <nav className={`mx-6 py-[10px] ${toogleHeader ? 'px-6 bg-[#312D4B]/[0.85] backdrop-blur-[9px] shadow-sm' : 'px-0 bg-transparent'} dark:text-foreground flex w-full transition-all ease-in-out duration-300 rounded-b-md`}>
                 <div className='flex items-center justify-between gap-4 w-full'>
                     <div className='flex items-center justify-between gap-2'>
-                        <Sheet>
-                            <SheetTrigger>
-                                <Button variant='icon' size='icon' onClick={() => setSidebarIsOpen(pre => !pre)} className=" text-xl shadow-none focus:ring-0 focus-visible:ring-0 border-none outline-none">
-                                    <MdMenu className='w-[1.7rem] h-[1.7rem]' />
-                                </Button>
-                            </SheetTrigger>
-                            <SheetContent side={'left'} className="w-[260px] p-0 bg-white dark:bg-itembackground">
-                                <SheetHeader className="flex items-center justify-between flex-row space-y-0 p-5 shadow-md">
-                                    <SheetTitle className="uppercase text-xl flex items-center justify-center">
-                                        <Image src={'/logo.png'} width={27} height={27} alt="logo" />
-                                        <span className="ml-[10px]">meterio</span>
-                                    </SheetTitle>
-                                    <SheetClose className="flex items-center justify-center rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-0 focus:ring-offset-0 disabled:pointer-events-none">
-                                        <RxCross2 className="w-4 h-4" />
-                                    </SheetClose>
-                                </SheetHeader>
-                                <Sidebar />
-                            </SheetContent>
-                        </Sheet>
+                        {
+                            width < 1200 && <Sheet>
+                                <SheetTrigger>
+                                    <Button variant='icon' size='icon' onClick={() => setSidebarIsOpen(pre => !pre)} className=" text-xl shadow-none focus:ring-0 focus-visible:ring-0 border-none outline-none">
+                                        <MdMenu className='w-[1.7rem] h-[1.7rem]' />
+                                    </Button>
+                                </SheetTrigger>
+                                <SidebarSmallDevice />
+                            </Sheet>
+                        }
                         <Button variant='icon' size='icon' className="text-xl shadow-none focus:ring-0 focus-visible:ring-0 border-none outline-none">
                             <MdOutlineSearch className='w-[1.7rem] h-[1.7rem]' />
                         </Button>
